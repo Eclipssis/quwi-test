@@ -1,5 +1,5 @@
 export const actions = {
-  async fetchProjects () {
+  async fetchAll () {
     try {
       const response = await this.$axios.$get('projects-manage/index')
       return response
@@ -8,7 +8,8 @@ export const actions = {
     }
   },
 
-  projectUpdate () {
-
+  async update (context, { id, params }) {
+    const response = await this.$axios.$post(`projects-manage/update?id=${id}`, params)
+    return response
   }
 }

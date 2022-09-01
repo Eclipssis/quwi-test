@@ -14,10 +14,8 @@ export const mutations = {
   },
 
   initAuth (state) {
-    console.log('Init APP AUTH')
     const tokenLocal = localStorage.getItem('token')
     if (tokenLocal) {
-      console.log('tokenLocal', tokenLocal)
       state.token = tokenLocal
     }
   }
@@ -27,8 +25,8 @@ export const actions = {
   async login ({ commit }, payload) {
     try {
       const response = await this.$axios.$post('/auth/login', payload)
-
       commit('setToken', response.token)
+      return response.token
     } catch (error) {
       throw error.response.data
     }

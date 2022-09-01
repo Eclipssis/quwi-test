@@ -60,9 +60,9 @@ export default {
 
   methods: {
     async onLogin () {
-      console.log('Login')
       try {
-        await this.$store.dispatch('auth/login', this.form)
+        const token = await this.$store.dispatch('auth/login', this.form)
+        this.$axios.setHeader('Authorization', `Bearer ${token}`)
         this.$router.push('/')
       } catch (error) {
         if (error.first_errors.email) {

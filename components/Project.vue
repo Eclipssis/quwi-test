@@ -8,7 +8,7 @@
       <span v-if="project.is_active" class="status status--active">Active</span>
       <span v-else class="status status--inactive">Inactive</span>
     </div>
-    <div>
+    <div class="project__time">
       total: {{ project.spent_sec_all_time }}
     </div>
   </div>

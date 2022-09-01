@@ -64,9 +64,14 @@ export default {
     }
   },
 
+  watch: {
+    value (newValue) {
+      this.inputValue = newValue
+    }
+  },
+
   methods: {
     onInputChange (event) {
-      console.log('event', event.target.value)
       this.inputValue = event.target.value
       return this.$emit('input', this.inputValue)
     }
